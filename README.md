@@ -6,6 +6,8 @@
 
 ---
 
+[![Portfolio](https://img.shields.io/badge/Portfolio...)](https://umairkaleem.github.io)
+
 ## 🧠 About Me
 
 - 🎓 Currently studying **Bachelor of Science in Artificial Intelligence (BSAI)**
@@ -54,7 +56,8 @@
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/umair-kaleem-918386326/)
 [![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/umairkaleem)
-[![Portfolio](https://img.shields.io/badge/Portfolio-00FFE0?style=for-the-badge&logo=github&logoColor=black)](https://umairkaleem.github.io)
+[![GitHub](https://img.shields.io/badge/Portfolio-00FFE0?style=for-the-badge&logo=github&logoColor=black)](https://umairkaleem.github.io)
+[![Portfolio](https://img.shields.io/badge/Portfolio...)](https://umairkaleem.github.io)
 
 ---
 
