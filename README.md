@@ -1,4 +1,4 @@
-# umairkaleem.githu.io
+# umairkaleem.GitHub.io
 # 💭 Hey, I'm Umair Kaleem
 
 **AI Enthusiast | BSAI Student | Aspiring Machine Learning Engineer**  
