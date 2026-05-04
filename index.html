@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
     <title>Umair Kaleem — AI & ML Engineer</title>
     <meta name="title" content="Umair Kaleem — AI & ML Engineer">
     <meta name="description" content="BSAI Student and AI Enthusiast building intelligent systems in Islamabad, Pakistan.">
@@ -15,12 +14,6 @@
     <meta property="og:title" content="Umair Kaleem — AI & ML Engineer">
     <meta property="og:description" content="Exploring the frontier of machine learning and intelligent software.">
     <meta property="og:image" content="https://umairkaleem.github.io/meta-image.png">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://umairkaleem.github.io/">
-    <meta property="twitter:title" content="Umair Kaleem — AI & ML Engineer">
-    <meta property="twitter:description" content="Exploring the frontier of machine learning and intelligent software.">
-    <meta property="twitter:image" content="https://umairkaleem.github.io/meta-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +51,6 @@
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s ease;
             mix-blend-mode: difference;
         }
         .cursor-ring {
@@ -68,8 +60,7 @@
             position: fixed;
             pointer-events: none;
             z-index: 9998;
-            transition: transform 0.15s ease;
-            opacity: 0.5;
+            opacity: 0;
         }
 
         body::after {
@@ -422,9 +413,9 @@
             UMAIR<span class="accent-dot">.</span>
             <span class="line2">KALEEM</span>
         </h1>
-<p class="hero-sub">
-    Hi, I'm <strong>Umair Kaleem</strong>. I am a <strong>Data Analyst</strong> with experience in data cleaning, preprocessing, and web scraping. Skilled in Python (Pandas, NumPy), SQL, Excel, and data visualization using Matplotlib and Seaborn, with a strong ability to turn raw data into actionable insights.
-</p>
+        <p class="hero-sub">
+            Hi, I'm <strong>Umair Kaleem</strong>. I am a <strong>Data Analyst</strong> with experience in data cleaning, preprocessing, and web scraping. Skilled in Python (Pandas, NumPy), SQL, Excel, and data visualization using Matplotlib and Seaborn.
+        </p>
         <div class="hero-cta">
             <a href="https://github.com/umairkaleem" target="_blank" class="btn btn-primary">View GitHub →</a>
             <a href="#projects" class="btn btn-ghost">See Projects</a>
@@ -455,17 +446,11 @@
         <h2>Who I Am</h2>
         <div class="about-grid">
             <div class="about-text">
-                <p>
-                    I’m a student of Artificial Intelligence with a deep-seated interest in how machines learn and process the world. Based in Islamabad, I focus on the intersection of data science and software engineering.
-                </p>
+                <p>I’m a student of Artificial Intelligence with a deep-seated interest in how machines learn and process the world. Based in Islamabad, I focus on the intersection of data science and software engineering.</p>
                 <br>
-                <p>
-                    My experience is diverse: I've engineered low-level data structures in C++, developed interactive games in C#, and built full-stack web applications using PHP and Python.
-                </p>
+                <p>My experience is diverse: I've engineered low-level data structures in C++, developed interactive games in C#, and built full-stack web applications using PHP and Python.</p>
                 <br>
-                <p>
-                    Currently, I'm diving into predictive modeling on <a href="https://www.kaggle.com/umairkaleem" target="_blank">Kaggle</a> and maintaining an open-source presence on <a href="https://github.com/umairkaleem" target="_blank">GitHub</a>.
-                </p>
+                <p>Currently, I'm diving into predictive modeling on <a href="https://www.kaggle.com/umairkaleem" target="_blank">Kaggle</a> and maintaining an open-source presence on <a href="https://github.com/umairkaleem" target="_blank">GitHub</a>.</p>
             </div>
 
             <div class="skills-list">
@@ -554,34 +539,34 @@
 
     <script>
         const cursor = document.getElementById('cursor');
-        const ring   = document.getElementById('cursorRing');
-        let mx = 0, my = 0, rx = 0, ry = 0;
+        const ring = document.getElementById('cursorRing');
+        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+        let rx = mx, ry = my;
 
         document.addEventListener('mousemove', e => {
             mx = e.clientX; my = e.clientY;
-            cursor.style.left = mx - 6 + 'px';
-            cursor.style.top  = my - 6 + 'px';
+            cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+            ring.style.opacity = '0.5';
         });
 
         function animateRing() {
             rx += (mx - rx - 18) * 0.15;
             ry += (my - ry - 18) * 0.15;
-            ring.style.left = rx + 'px';
-            ring.style.top  = ry + 'px';
+            ring.style.transform = `translate(${rx}px, ${ry}px)`;
             requestAnimationFrame(animateRing);
         }
         animateRing();
 
         document.querySelectorAll('a, button, .project-card').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(2.5)';
-                ring.style.transform   = 'scale(0.5)';
-                ring.style.opacity     = '1';
+                cursor.style.transform += ' scale(2.5)';
+                ring.style.opacity = '1';
+                ring.style.transform += ' scale(0.5)';
             });
             el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                ring.style.transform   = 'scale(1)';
-                ring.style.opacity     = '0.5';
+                cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px) scale(1)`;
+                ring.style.opacity = '0.5';
+                ring.style.transform = `translate(${rx}px, ${ry}px) scale(1)`;
             });
         });
     </script>
