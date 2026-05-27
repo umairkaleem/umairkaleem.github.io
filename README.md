@@ -42,14 +42,6 @@
 | [DSA Array Operations](https://github.com/umairkaleem/DSA_Array_operation-) | Data structures & algorithms array operations | C++ |
 | [Binary Search Tree](https://github.com/umairkaleem/Opperations_on_BinaryTree_lab_11_BST) | Full BST operations — insert, delete, traversal | C++ |
 
----
-
-## 📊 GitHub Stats
-
-![Umair's GitHub Stats](https://github-readme-stats.vercel.app/api?username=umairkaleem&show_icons=true&theme=tokyonight&hide_border=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=umairkaleem&layout=compact&theme=tokyonight&hide_border=true)
-
----
 
 ## 🔗 Connect With Me
 
