@@ -11,7 +11,7 @@
 
 - 🎓 Currently studying **Bachelor of Science in Artificial Intelligence (BSAI)**
 - 🤖 Passionate about **Machine Learning** and building intelligent systems
-- 💻 Experience with **C++, C#, Python, HTML, CSS & PHP**
+- 💻 Experience with **Python,C++, C#, HTML, CSS & PHP**
 - 🌱 Currently exploring **ML models, data science & AI applications**
 - 🏆 Building end-to-end projects — from game engines to ML web apps
 - ⚡ Fun fact: I go by **"The Challenger"**
@@ -31,16 +31,6 @@
 
 ---
 
-## 🚀 Featured Projects
-
-| Project | Description | Language |
-|---|---|---|
-| [Instagram Impressions Model](https://github.com/umairkaleem/instagram_impressions_model) | End-to-end ML web app predicting Instagram post impressions | Python |
-| [Fighter Jet Shooting Game](https://github.com/umairkaleem/fighterJetShootingGame) | 2D space shooter game with player controls | C# |
-| [E-Commerce for Small Stores](https://github.com/umairkaleem/E-commerce-webpage-for-small-stores) | Full e-commerce system with admin & customer features | PHP |
-| [Shopping Mall Guide](https://github.com/umairkaleem/1st-samester-project) | Mall guide & user calculation management system | C++ |
-| [DSA Array Operations](https://github.com/umairkaleem/DSA_Array_operation-) | Data structures & algorithms array operations | C++ |
-| [Binary Search Tree](https://github.com/umairkaleem/Opperations_on_BinaryTree_lab_11_BST) | Full BST operations — insert, delete, traversal | C++ |
 
 
 ## 🔗 Connect With Me
