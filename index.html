@@ -521,44 +521,7 @@
             opacity:1;
             transform:translateY(0);
         }
-.file-upload{
-    display:flex;
-    flex-direction:column;
-    gap:.6rem;
-}
 
-.custom-file-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:.8rem;
-
-    width:fit-content;
-
-    padding:1rem 1.2rem;
-
-    border:1px dashed var(--accent);
-
-    border-radius:14px;
-
-    color:var(--accent);
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.custom-file-btn:hover{
-    background:rgba(0,255,224,0.05);
-}
-
-.custom-file-btn input{
-    display:none;
-}
-
-#fileName{
-    color:var(--muted);
-    font-size:.8rem;
-}
         /* MOBILE */
 
         @media(max-width:980px){
@@ -1000,10 +963,9 @@
 
                 </div>
 
-                <form
+               <form
                     action="https://api.web3forms.com/submit"
-                    method="POST"
-                    enctype="multipart/form-data">
+                     method="POST">
 
                     <input type="hidden"
                            name="access_key"
@@ -1023,26 +985,7 @@
                               rows="6"
                               placeholder="Write your message..."
                               required></textarea>
-                    <div class="file-upload">
-
-    <label class="custom-file-btn">
-
-        <i class="fas fa-paperclip"></i>
-        Attach Resume / Project Brief
-
-        <input
-            type="file"
-            id="attachment"
-            name="attachment"
-            accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
-
-    </label>
-
-    <span id="fileName">
-        No file selected
-    </span>
-
-</div>
+                    
 
                     <button type="submit" class="btn btn-primary">
                         Send Message
