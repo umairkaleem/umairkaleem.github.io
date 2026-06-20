@@ -6,593 +6,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Umair Kaleem | Data Analyst |  AI & ML Enthusiast </title>
+    <title>Umair Kaleem | AI Engineer & Data Analyst</title>
 
     <meta name="title" content="Umair Kaleem — AI & ML Engineer">
-    <meta name="title" content="Umair — AI & ML Engineer">
-    <meta name="title" content="Umair K — AI & ML Engineer">
-    <meta name="title" content="Kaleem — AI & ML Engineer">
-    <meta name="description" content="Umair Kaleem is an Artificial Intelligence student, Machine Learning Engineer, Data Analyst, and Full Stack Developer building AI-powered applications, predictive models, and modern web solutions in Pakistan."><meta name="description" content="BSAI Student and AI Enthusiast building intelligent systems in Islamabad, Pakistan.">
-    <meta name="keywords" content="Umair Kaleem, AI Engineer, Machine Learning Engineer, Data Analyst, Python Developer, Full Stack Developer, Artificial Intelligence Student, Data Science, SQL, Machine Learning Projects, Portfolio Website, Islamabad, Pakistan">
+    <meta name="description" content="Umair Kaleem is an Artificial Intelligence student, Machine Learning Engineer, Data Analyst, and Full Stack Developer building AI-powered applications, predictive models, and modern web solutions in Pakistan.">
+    <meta name="keywords" content="Umair Kaleem, AI Engineer, Machine Learning Engineer, Data Analyst, Python Developer, Full Stack Developer, Artificial Intelligence Student, Data Science, SQL, Machine Learning Projects, Portfolio Website, Pakistan">
     <meta name="author" content="Umair Kaleem">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://umairkaleem.github.io/">
     <meta property="og:title" content="Umair Kaleem — AI & ML Engineer">
-    <meta property="og:description" content="Artificial Intelligence student, Machine Learning Engineer, and Data Analyst building intelligent systems and scalable software solutions.">    <meta property="og:image" content="https://umairkaleem.github.io/meta-image.png">
+    <meta property="og:description" content="Artificial Intelligence student, Machine Learning Engineer, and Data Analyst building intelligent systems and scalable software solutions.">
 
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Umair Kaleem — AI & ML Engineer">
-<meta name="twitter:description" content="Machine Learning Engineer, Data Analyst and Full Stack Developer building AI-powered solutions.">
-<meta name="twitter:image" content="https://umairkaleem.github.io/meta-image.png">
-    
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="canonical" href="https://umairkaleem.github.io/">
 
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
+    <link rel="stylesheet" href="style.css">
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        :root{
-            --bg:#06070d;
-            --surface:#10131c;
-            --surface2:#151926;
-            --border:#20263a;
-            --text:#f5f7ff;
-            --muted:#8d93a8;
-            --accent:#00ffe0;
-            --accent2:#7c5cff;
-        }
-
-        html{
-            scroll-behavior:smooth;
-        }
-
-        body{
-            background:var(--bg);
-            color:var(--text);
-            font-family:'DM Mono', monospace;
-            overflow-x:hidden;
-            line-height:1.7;
-        }
-
-        body::before{
-            content:'';
-            position:fixed;
-            inset:0;
-            background:
-            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size:60px 60px;
-            pointer-events:none;
-            z-index:-1;
-        }
-
-        a{
-            text-decoration:none;
-        }
-
-        img{
-            max-width:100%;
-        }
-
-        /* HEADER */
-
-        header{
-            width:100%;
-            position:sticky;
-            top:0;
-            z-index:999;
-            backdrop-filter:blur(12px);
-            background:rgba(6,7,13,0.75);
-            border-bottom:1px solid rgba(255,255,255,0.05);
-
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-
-            padding:1.5rem 8%;
-        }
-
-        .logo{
-            font-family:'Syne', sans-serif;
-            font-size:1.3rem;
-            font-weight:800;
-            color:var(--accent);
-            letter-spacing:2px;
-        }
-
-        nav{
-            display:flex;
-            gap:2rem;
-            align-items:center;
-        }
-
-        nav a{
-            color:var(--muted);
-            font-size:0.82rem;
-            letter-spacing:1px;
-            transition:0.3s;
-        }
-
-        nav a:hover{
-            color:var(--accent);
-        }
-
-        /* HERO */
-
-        .hero{
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:6rem 8%;
-        }
-
-        .hero-content{
-            display:grid;
-            grid-template-columns:320px 1fr;
-            align-items:center;
-            gap:5rem;
-            width:100%;
-            max-width:1300px;
-        }
-
-        .hero-image-wrapper{
-            position:relative;
-        }
-
-        .hero-image{
-            width:320px;
-            height:320px;
-            border-radius:30px;
-            object-fit:cover;
-            border:1px solid rgba(255,255,255,0.08);
-            box-shadow:
-            0 0 0 1px rgba(255,255,255,0.04),
-            0 30px 80px rgba(0,255,224,0.12);
-        }
-
-        .hero-image-wrapper::after{
-            content:'';
-            position:absolute;
-            inset:-15px;
-            border:1px solid rgba(0,255,224,0.2);
-            border-radius:40px;
-            z-index:-1;
-        }
-
-        .hero-tag{
-            display:inline-flex;
-            align-items:center;
-            gap:0.6rem;
-            padding:0.55rem 1rem;
-            background:rgba(0,255,224,0.08);
-            border:1px solid rgba(0,255,224,0.18);
-            color:var(--accent);
-            border-radius:999px;
-            font-size:0.72rem;
-            margin-bottom:1.5rem;
-        }
-
-        .hero-title{
-            font-family:'Syne', sans-serif;
-            font-size:clamp(3rem, 8vw, 6rem);
-            line-height:0.95;
-            margin-bottom:1.8rem;
-            letter-spacing:-4px;
-        }
-
-        .hero-title span{
-            color:transparent;
-            -webkit-text-stroke:1px white;
-        }
-
-        .hero-desc{
-            color:var(--muted);
-            max-width:720px;
-            font-size:1rem;
-            margin-bottom:2.5rem;
-        }
-
-        .hero-desc strong{
-            color:var(--text);
-        }
-
-        .hero-buttons{
-            display:flex;
-            gap:1rem;
-            flex-wrap:wrap;
-            margin-bottom:2.5rem;
-        }
-
-        .btn{
-            padding:1rem 1.8rem;
-            border-radius:14px;
-            font-size:0.82rem;
-            transition:0.3s;
-            letter-spacing:1px;
-            border:1px solid transparent;
-        }
-
-        .btn-primary{
-            background:var(--accent);
-            color:#000;
-            font-weight:700;
-        }
-
-        .btn-primary:hover{
-            transform:translateY(-3px);
-            box-shadow:0 15px 30px rgba(0,255,224,0.2);
-        }
-
-        .btn-secondary{
-            border:1px solid var(--border);
-            color:var(--text);
-            background:var(--surface);
-        }
-
-        .btn-secondary:hover{
-            border-color:var(--accent);
-            color:var(--accent);
-        }
-
-        .socials{
-            display:flex;
-            gap:1rem;
-        }
-
-        .socials a{
-            width:50px;
-            height:50px;
-            border-radius:14px;
-            background:var(--surface);
-            border:1px solid var(--border);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:var(--muted);
-            transition:0.3s;
-            font-size:1.1rem;
-        }
-
-        .socials a:hover{
-            color:var(--accent);
-            transform:translateY(-4px);
-            border-color:rgba(0,255,224,0.3);
-        }
-
-        /* SECTION */
-
-        .section{
-            padding:7rem 8%;
-        }
-
-        .section-header{
-            margin-bottom:4rem;
-        }
-
-        .section-tag{
-            color:var(--accent);
-            text-transform:uppercase;
-            letter-spacing:2px;
-            font-size:0.75rem;
-            margin-bottom:1rem;
-        }
-
-        .section-title{
-            font-family:'Syne', sans-serif;
-            font-size:clamp(2rem, 5vw, 3.5rem);
-            margin-bottom:1rem;
-        }
-
-        .section-sub{
-            color:var(--muted);
-            max-width:750px;
-        }
-
-        /* ABOUT */
-
-        .about-grid{
-            display:grid;
-            grid-template-columns:1.1fr 0.9fr;
-            gap:4rem;
-        }
-
-        .about-card{
-            background:var(--surface);
-            border:1px solid var(--border);
-            padding:2rem;
-            border-radius:24px;
-        }
-
-        .about-card p{
-            color:var(--muted);
-            margin-bottom:1.5rem;
-        }
-
-        .about-card strong{
-            color:var(--text);
-        }
-
-        /* SKILLS */
-
-        .skills{
-            display:flex;
-            flex-direction:column;
-            gap:1.4rem;
-        }
-
-        .skill{
-            display:flex;
-            flex-direction:column;
-            gap:0.7rem;
-        }
-
-        .skill-top{
-            display:flex;
-            justify-content:space-between;
-            color:var(--muted);
-            font-size:0.82rem;
-        }
-
-        .skill-bar{
-            height:10px;
-            background:#1a1f30;
-            border-radius:999px;
-            overflow:hidden;
-        }
-
-        .skill-fill{
-            height:100%;
-            border-radius:999px;
-            background:linear-gradient(90deg, var(--accent), var(--accent2));
-        }
-
-        /* STATS */
-
-        .stats{
-            display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:1.5rem;
-            margin-top:3rem;
-        }
-
-        .stat-card{
-            background:var(--surface);
-            border:1px solid var(--border);
-            padding:2rem;
-            border-radius:24px;
-            text-align:center;
-        }
-
-        .stat-number{
-            font-family:'Syne', sans-serif;
-            font-size:2.2rem;
-            color:var(--accent);
-        }
-
-        .stat-text{
-            color:var(--muted);
-            font-size:0.8rem;
-            margin-top:0.5rem;
-        }
-
-        /* PROJECTS */
-
-        .projects-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-            gap:2rem;
-        }
-
-        .project-card{
-            background:var(--surface);
-            border:1px solid var(--border);
-            border-radius:24px;
-            padding:2rem;
-            transition:0.35s;
-            position:relative;
-            overflow:hidden;
-        }
-
-        .project-card:hover{
-            transform:translateY(-10px);
-            border-color:rgba(0,255,224,0.3);
-            box-shadow:0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .project-card::before{
-            content:'';
-            position:absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:4px;
-            background:linear-gradient(90deg,var(--accent),var(--accent2));
-        }
-
-        .project-tech{
-            color:var(--accent);
-            font-size:0.72rem;
-            margin-bottom:1rem;
-            letter-spacing:1px;
-            text-transform:uppercase;
-        }
-
-        .project-title{
-            font-family:'Syne', sans-serif;
-            font-size:1.4rem;
-            margin-bottom:1rem;
-            color:var(--text);
-        }
-
-        .project-desc{
-            color:var(--muted);
-            margin-bottom:1.7rem;
-            font-size:0.9rem;
-        }
-
-        .project-link{
-            color:var(--accent);
-            font-size:0.82rem;
-        }
-
-        /* CONTACT */
-
-        .contact-box{
-            background:var(--surface);
-            border:1px solid var(--border);
-            border-radius:28px;
-            padding:3rem;
-        }
-
-        .contact-grid{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:3rem;
-        }
-
-        .contact-info p{
-            color:var(--muted);
-            margin-bottom:1.5rem;
-        }
-
-        form{
-            display:flex;
-            flex-direction:column;
-            gap:1rem;
-        }
-
-        input,
-        textarea{
-            background:#0c1018;
-            border:1px solid var(--border);
-            color:var(--text);
-            padding:1rem;
-            border-radius:14px;
-            font-family:'DM Mono', monospace;
-            resize:none;
-            outline:none;
-            transition:0.3s;
-        }
-
-        input:focus,
-        textarea:focus{
-            border-color:var(--accent);
-        }
-
-        button{
-            border:none;
-            cursor:pointer;
-        }
-
-        /* FOOTER */
-
-        footer{
-            padding:2rem 8%;
-            border-top:1px solid rgba(255,255,255,0.05);
-
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-
-            color:var(--muted);
-            font-size:0.8rem;
-        }
-
-        .footer-name{
-            color:var(--accent);
-        }
-        .hero-availability{
-    color:var(--accent);
-    font-size:0.9rem;
-    margin-bottom:2rem;
-    font-weight:500;
-}
-
-        /* ANIMATION */
-
-        .fade-up{
-            opacity:0;
-            transform:translateY(30px);
-            transition:0.8s ease;
-        }
-
-        .fade-up.active{
-            opacity:1;
-            transform:translateY(0);
-        }
-
-        /* MOBILE */
-
-        @media(max-width:980px){
-
-            .hero-content,
-            .about-grid,
-            .contact-grid{
-                grid-template-columns:1fr;
-            }
-
-            .hero{
-                padding-top:8rem;
-            }
-
-            .hero-image{
-                width:100%;
-                max-width:340px;
-                height:auto;
-                aspect-ratio:1/1;
-            }
-
-            .stats{
-                grid-template-columns:repeat(2,1fr);
-            }
-
-            footer{
-                flex-direction:column;
-                gap:1rem;
-                text-align:center;
-            }
-        }
-
-        @media(max-width:600px){
-
-            header{
-                padding:1.2rem 5%;
-            }
-
-            nav{
-                display:none;
-            }
-
-            .section,
-            .hero{
-                padding-left:5%;
-                padding-right:5%;
-            }
-
-            .stats{
-                grid-template-columns:1fr;
-            }
-
-            .hero-title{
-                letter-spacing:-2px;
-            }
-        }
-
-    </style>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -624,108 +59,72 @@
     <!-- HEADER -->
 
     <header>
+        <div class="header-inner glass">
 
-        <a href="#" class="logo">UK/</a>
+            <nav class="nav-left">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="blog.html">Blog</a>
+            </nav>
 
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="https://github.com/umairkaleem" target="_blank">GitHub ↗</a>
-            <a href="Umair-Kaleem-Resume.pdf"
-   download
-   class="btn btn-primary">
+            <nav class="nav-right">
+                <a href="https://github.com/umairkaleem" target="_blank">GitHub ↗</a>
+                <a href="Umair-Kaleem-Resume.pdf" download class="btn btn-primary">
+                    <i class="fas fa-file-download"></i>
+                    Resume
+                </a>
+            </nav>
 
-   <i class="fas fa-file-download"></i>
-   Download Resume
-
-</a>
-            
-        </nav>
-
+        </div>
     </header>
 
     <!-- HERO -->
-<!-- <h1>Umair Kaleem — AI & ML Engineer</h1>
 
-<h2>About Me</h2>
-
-<h2>Technical Skills</h2>
-
-<h2>Featured Projects</h2>
-
-    <h3>Instagram Reach Prediction Model</h3>
-    <h3>Fighter Jet Arcade Shooter</h3>
-    <h3>E-Commerce Management System</h3>
-
-<h2>Contact</h2> -->
     <section class="hero">
 
         <div class="hero-content fade-up">
 
-            <div class="hero-image-wrapper">
+            <div class="hero-image-wrapper glass">
+                <div class="hero-image-glow"></div>
                 <img src="umair.jpeg" alt="Umair Kaleem" class="hero-image">
             </div>
 
             <div>
 
-                <div class="hero-tag">
+                <div class="hero-tag glass">
+                    <span class="pulse"></span>
                     Data Analyst • AI & ML Enthusiast • Full Stack Developer • BSAI Student
                 </div>
 
                 <h1 class="hero-title">
-                    Umair.<br>
-                    <span>Kaleem</span>
+                    Umair<br>
+                    <span class="grad">Kaleem.</span>
                 </h1>
 
                 <p class="hero-desc">
-
                     Hi, I'm <strong>Umair Kaleem</strong> — an Artificial Intelligence student passionate about Machine Learning, Data Analytics, and scalable software systems.
-
                     I specialize in building intelligent applications using Python, SQL, C++, PHP, and modern web technologies. My focus is creating impactful digital solutions through clean architecture, automation, and data-driven engineering.
-
                 </p>
 
                 <div class="hero-buttons">
-
-                    <a href="https://github.com/umairkaleem" target="_blank" class="btn btn-primary">
-                        View GitHub
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/umair-kaleem-918386326/" target="_blank" class="btn btn-secondary">
-                        LinkedIn
-                    </a>
-
-                    <a href="#projects" class="btn btn-secondary">
-                        Explore Projects
-                    </a>
-
+                    <a href="https://github.com/umairkaleem" target="_blank" class="btn btn-primary">View GitHub</a>
+                    <a href="https://www.linkedin.com/in/umair-kaleem-918386326/" target="_blank" class="btn btn-secondary glass">LinkedIn</a>
+                    <a href="#projects" class="btn btn-secondary glass">Explore Projects</a>
                 </div>
 
                 <div class="socials">
-
-                    <a href="https://linkedin.com/in/umair-kaleem-918386326/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
-                    <a href="https://github.com/umairkaleem" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-
-                    <a href="https://www.instagram.com/umair._.kaleem/" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-
-                    <a href="https://www.kaggle.com/umairkaleem" target="_blank">
-                        <i class="fab fa-kaggle"></i>
-                    </a>
-
+                    <a href="https://linkedin.com/in/umair-kaleem-918386326/" target="_blank" class="glass"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/umairkaleem" target="_blank" class="glass"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/umair._.kaleem/" target="_blank" class="glass"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.kaggle.com/umairkaleem" target="_blank" class="glass"><i class="fab fa-kaggle"></i></a>
                 </div>
-      <p class="hero-availability">
+
+                <p class="hero-availability">
+                    <i class="fas fa-circle" style="font-size:6px;color:var(--accent3);"></i>
                     Available for Internships • Freelance Projects • AI Collaborations
-</p>
+                </p>
+
             </div>
-      
 
         </div>
 
@@ -736,141 +135,58 @@
     <section class="section" id="about">
 
         <div class="section-header fade-up">
-
             <div class="section-tag">About Me</div>
-
-            <h2 class="section-title">
-                Building Intelligent Digital Experiences
-            </h2>
-
-            <p class="section-sub">
-                Passionate about artificial intelligence, data-driven systems,
-                and scalable software engineering solutions.
-            </p>
-
+            <h2 class="section-title">Building Intelligent Digital Experiences</h2>
+            <p class="section-sub">Passionate about artificial intelligence, data-driven systems, and scalable software engineering solutions.</p>
         </div>
 
         <div class="about-grid">
 
-            <div class="about-card fade-up">
-
-                <p>
-
-                    I am an Artificial Intelligence student focused on solving real-world problems through machine learning, automation, and modern software systems.
-
-                </p>
-
-                <p>
-
-                    My experience includes <strong>Data Analysis</strong>, <strong>Machine Learning</strong>, <strong>Web Development</strong>, and <strong>Software Engineering</strong>. I enjoy building systems that combine intelligent algorithms with practical user experiences.
-
-                </p>
-
-                <p>
-
-                    Beyond academics, I actively work on personal projects involving predictive analytics, full-stack applications, and AI-powered solutions while continuously improving my development workflow and engineering mindset.
-
-                </p>
-
+            <div class="about-card glass fade-up">
+                <p>I am an Artificial Intelligence student focused on solving real-world problems through machine learning, automation, and modern software systems.</p>
+                <p>My experience includes <strong>Data Analysis</strong>, <strong>Machine Learning</strong>, <strong>Web Development</strong>, and <strong>Software Engineering</strong>. I enjoy building systems that combine intelligent algorithms with practical user experiences.</p>
+                <p>Beyond academics, I actively work on personal projects involving predictive analytics, full-stack applications, and AI-powered solutions while continuously improving my development workflow and engineering mindset.</p>
+                <p>Studying at <strong>Sir Syed CASE Institute of Technology</strong> as part of the BSAI program, I'm building toward a career where I can apply machine learning to genuinely useful products, not just academic exercises.</p>
             </div>
 
-            <div class="about-card fade-up">
-
+            <div class="about-card glass fade-up">
                 <div class="skills">
 
                     <div class="skill">
-
-                        <div class="skill-top">
-                            <span>Python & Machine Learning</span>
-                            <span>90%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:90%"></div>
-                        </div>
-
+                        <div class="skill-top"><span>Python & Machine Learning</span><span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
                     </div>
 
                     <div class="skill">
-
-                        <div class="skill-top">
-                            <span>Data Analytics & SQL</span>
-                            <span>85%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:85%"></div>
-                        </div>
-
+                        <div class="skill-top"><span>Data Analytics & SQL</span><span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
                     </div>
 
                     <div class="skill">
-
-                        <div class="skill-top">
-                            <span>C++ & Problem Solving</span>
-                            <span>80%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:80%"></div>
-                        </div>
-
+                        <div class="skill-top"><span>C++ & Problem Solving</span><span>80%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
                     </div>
 
                     <div class="skill">
-
-                        <div class="skill-top">
-                            <span>Web Development</span>
-                            <span>82%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:82%"></div>
-                        </div>
-
+                        <div class="skill-top"><span>Web Development</span><span>82%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
                     </div>
 
                     <div class="skill">
-
-                        <div class="skill-top">
-                            <span>Git & Development Workflow</span>
-                            <span>88%</span>
-                        </div>
-
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:88%"></div>
-                        </div>
-
+                        <div class="skill-top"><span>Git & Development Workflow</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
                     </div>
 
                 </div>
-
             </div>
 
         </div>
 
         <div class="stats fade-up">
-
-            <div class="stat-card">
-                <div class="stat-number">10+</div>
-                <div class="stat-text">Projects Built</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-number">5+</div>
-                <div class="stat-text">Technologies</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-number">AI</div>
-                <div class="stat-text">Specialization</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-number">PK</div>
-                <div class="stat-text">Based in Pakistan</div>
-            </div>
-
+            <div class="stat-card glass"><div class="stat-number">10+</div><div class="stat-text">Projects Built</div></div>
+            <div class="stat-card glass"><div class="stat-number">5+</div><div class="stat-text">Technologies</div></div>
+            <div class="stat-card glass"><div class="stat-number">AI</div><div class="stat-text">Specialization</div></div>
+            <div class="stat-card glass"><div class="stat-number">PK</div><div class="stat-text">Based in Pakistan</div></div>
         </div>
 
     </section>
@@ -880,92 +196,76 @@
     <section class="section" id="projects">
 
         <div class="section-header fade-up">
-
             <div class="section-tag">Portfolio</div>
-
-            <h2 class="section-title">
-                Featured Projects
-            </h2>
-
-            <p class="section-sub">
-                A selection of projects focused on machine learning,
-                desktop applications, and scalable web solutions.
-            </p>
-
+            <h2 class="section-title">All Projects</h2>
+            <p class="section-sub">Everything I've built, from machine learning models to full-stack web systems and desktop applications.</p>
         </div>
 
         <div class="projects-grid">
 
-            <a href="https://github.com/umairkaleem/instagram_impressions_model"
-               target="_blank"
-               class="project-card fade-up">
-
-                <div class="project-tech">
-                    Python • Machine Learning
-                </div>
-
-                <h3 class="project-title">
-                    Instagram Reach Prediction Model
-                </h3>
-
-                <p class="project-desc">
-
-                    Machine learning model for predicting Instagram post reach using engagement analytics and social performance metrics.
-
-                </p>
-
-                <span class="project-link">
-                    View Repository →
-                </span>
-
+            <a href="https://github.com/umairkaleem/instagram_impressions_model" target="_blank" class="project-card glass fade-up">
+                <div class="project-tech">Python • Machine Learning</div>
+                <h3 class="project-title">Instagram Reach Prediction Model</h3>
+                <p class="project-desc">Machine learning model for predicting Instagram post reach using engagement analytics and social performance metrics.</p>
+                <span class="project-link">View Repository <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
             </a>
 
-            <a href="https://github.com/umairkaleem/fighterJetShootingGame"
-               target="_blank"
-               class="project-card fade-up">
-
-                <div class="project-tech">
-                    C# • Windows Forms
-                </div>
-
-                <h3 class="project-title">
-                    Fighter Jet Arcade Shooter
-                </h3>
-
-                <p class="project-desc">
-
-                    Desktop arcade shooting game developed in C# featuring enemy AI, collision detection, score tracking, and dynamic gameplay.
-
-                </p>
-
-                <span class="project-link">
-                    View Repository →
-                </span>
-
+            <a href="https://github.com/umairkaleem/E-commerce-webpage-for-small-stores" target="_blank" class="project-card glass fade-up">
+                <div class="project-tech">PHP • SQL • Full Stack</div>
+                <h3 class="project-title">One Dollar Shop — E-Commerce System</h3>
+                <p class="project-desc">Full-stack e-commerce platform for small stores with admin dashboard, payment account management, cart, and checkout flow.</p>
+                <span class="project-link">View Repository <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
             </a>
 
-            <a href="https://github.com/umairkaleem/E-commerce-webpage-for-small-stores"
-               target="_blank"
-               class="project-card fade-up">
+            <a href="https://github.com/umairkaleem/fighterJetShootingGame" target="_blank" class="project-card glass fade-up">
+                <div class="project-tech">C# • Windows Forms</div>
+                <h3 class="project-title">Fighter Jet Arcade Shooter</h3>
+                <p class="project-desc">Desktop arcade shooting game developed in C# featuring enemy AI, collision detection, score tracking, and dynamic gameplay.</p>
+                <span class="project-link">View Repository <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
+            </a>
 
-                <div class="project-tech">
-                    PHP • SQL • Full Stack
-                </div>
+            <a href="https://github.com/umairkaleem/1st-samester-project" target="_blank" class="project-card glass fade-up">
+                <div class="project-tech">C++ • Console App</div>
+                <h3 class="project-title">Shopping Mall Management System</h3>
+                <p class="project-desc">Console-based mall management system covering parking, store directory, shopping calculator, food court, and billing — built with core C++ logic.</p>
+                <span class="project-link">View Repository <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
+            </a>
 
-                <h3 class="project-title">
-                    E-Commerce Management System
-                </h3>
+            <a href="https://github.com/umairkaleem/Python_learning" target="_blank" class="project-card glass fade-up">
+                <div class="project-tech">Python • AI Algorithms</div>
+                <h3 class="project-title">Python & AI Algorithms Lab</h3>
+                <p class="project-desc">A structured collection covering A* search, BFS/DFS, Minimax with Alpha-Beta pruning, graph algorithms, and core Python fundamentals.</p>
+                <span class="project-link">View Repository <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
+            </a>
 
-                <p class="project-desc">
+            <a href="https://github.com/umairkaleem" target="_blank" class="project-card glass fade-up">
+                <div class="project-tech">Streamlit • Python</div>
+                <h3 class="project-title">AI Maze Solver & Pathfinding Visualizer</h3>
+                <p class="project-desc">Interactive Streamlit app visualizing DFS, BFS, and A* pathfinding algorithms in real time, with a player-controlled maze mode.</p>
+                <span class="project-link">View Repository <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>
+            </a>
 
-                    Full-stack e-commerce platform for small businesses with inventory handling, order management, and database integration.
+        </div>
 
+    </section>
+
+    <!-- BLOG TEASER -->
+
+    <section class="section" id="blog-teaser">
+
+        <div class="blog-teaser-box glass fade-up">
+
+            <div class="blog-teaser-text">
+                <div class="section-tag">Community</div>
+                <h2 class="section-title">Read & Write on the Blog</h2>
+                <p class="section-sub">
+                    A space for sharing ideas on AI, development, and student life.
+                    Anyone can submit a post — published once reviewed and approved.
                 </p>
+            </div>
 
-                <span class="project-link">
-                    View Repository →
-                </span>
-
+            <a href="blog.html" class="btn btn-primary">
+                Visit Blog <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
             </a>
 
         </div>
@@ -976,81 +276,29 @@
 
     <section class="section" id="contact">
 
-        <div class="contact-box fade-up">
+        <div class="contact-box glass fade-up">
 
             <div class="contact-grid">
 
                 <div class="contact-info">
-
-                    <div class="section-tag">
-                        Contact
-                    </div>
-
-                    <h2 class="section-title">
-                        Let's Work Together
-                    </h2>
-
-                    <p>
-
-                        I'm open to internships, freelance opportunities,
-                        collaborations, and AI-focused development projects.
-
-                    </p>
-
-                    <p>
-
-                        Whether you need machine learning solutions,
-                        data analytics, or modern web development —
-                        feel free to connect.
-
-                    </p>
+                    <div class="section-tag">Contact</div>
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p>I'm open to internships, freelance opportunities, collaborations, and AI-focused development projects.</p>
+                    <p>Whether you need machine learning solutions, data analytics, or modern web development — feel free to connect.</p>
 
                     <div class="socials">
-
-                        <a href="https://github.com/umairkaleem" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-
-                        <a href="https://linkedin.com/in/umair-kaleem-918386326/" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-
-                        <a href="https://www.kaggle.com/umairkaleem" target="_blank">
-                            <i class="fab fa-kaggle"></i>
-                        </a>
-
+                        <a href="https://github.com/umairkaleem" target="_blank" class="glass"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/umair-kaleem-918386326/" target="_blank" class="glass"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.kaggle.com/umairkaleem" target="_blank" class="glass"><i class="fab fa-kaggle"></i></a>
                     </div>
-
                 </div>
 
-               <form
-                    action="https://api.web3forms.com/submit"
-                     method="POST">
-
-                    <input type="hidden"
-                           name="access_key"
-                           value="80ad74d9-eb8b-439f-8fec-044926c37650">
-
-                    <input type="text"
-                           name="name"
-                           placeholder="Your Name"
-                           required>
-
-                    <input type="email"
-                           name="email"
-                           placeholder="Your Email"
-                           required>
-
-                    <textarea name="message"
-                              rows="6"
-                              placeholder="Write your message..."
-                              required></textarea>
-                    
-
-                    <button type="submit" class="btn btn-primary">
-                        Send Message
-                    </button>
-
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="80ad74d9-eb8b-439f-8fec-044926c37650">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="6" placeholder="Write your message..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
 
             </div>
@@ -1062,46 +310,27 @@
     <!-- FOOTER -->
 
     <footer>
-
-        <span>
-            © 2026 <span class="footer-name">Umair Kaleem</span>
-        </span>
-
-        <span>
-            AI Engineer • Data Analyst • Full Stack Developer
-        </span>
-
-        <span>
-            Built with HTML, CSS & JavaScript
-        </span>
-
+        <span>© 2026 <span class="footer-name">Umair Kaleem</span></span>
+        <span>AI Engineer • Data Analyst • Full Stack Developer</span>
+        <a href="admin.html" class="footer-admin-link">Admin</a>
     </footer>
-
-    <!-- SCRIPT -->
 
     <script>
 
         const observer = new IntersectionObserver((entries) => {
-
             entries.forEach((entry) => {
-
                 if(entry.isIntersecting){
                     entry.target.classList.add('active');
+                    const fills = entry.target.querySelectorAll('.skill-fill');
+                    fills.forEach((fill) => { fill.style.width = fill.getAttribute('data-width'); });
                 }
-
             });
+        }, { threshold:0.1 });
 
-        }, {
-            threshold:0.1
-        });
-
-        document.querySelectorAll('.fade-up').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
 
     </script>
 
 </body>
 
 </html>
-```
