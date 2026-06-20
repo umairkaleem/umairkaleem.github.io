@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin | Umair Kaleem</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="header-inner glass">
+            <nav class="nav-left">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <nav class="nav-right">
+                <span id="user-email" style="color:var(--muted-dim); font-size:0.78rem;"></span>
+                <button id="logout-btn" class="btn btn-secondary glass btn-small" style="display:none;">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- LOGIN VIEW -->
+
+    <div id="login-view">
+
+        <div class="admin-login-box glass">
+
+            <div class="section-tag" style="text-align:center;">Admin Access</div>
+            <h2 class="section-title" style="text-align:center; font-size:1.7rem;">Log In</h2>
+            <p class="section-sub" style="text-align:center; margin:0 auto 2rem;">This area is restricted to the site owner.</p>
+
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary" id="login-btn" style="justify-content:center;">
+                    <i class="fas fa-lock"></i> Log In
+                </button>
+            </form>
+
+            <div id="login-status" class="status-msg"></div>
+
+        </div>
+
+    </div>
+
+    <!-- DASHBOARD VIEW (hidden until logged in) -->
+
+    <div id="dashboard-view" class="admin-dashboard" style="display:none;">
+
+        <div class="admin-header-bar">
+            <div>
+                <div class="section-tag">Dashboard</div>
+                <h2 class="section-title" style="font-size:2rem;">Welcome back</h2>
+            </div>
+        </div>
+
+        <div class="admin-tabs">
+            <div class="admin-tab active" data-tab="pending">Pending Posts <span id="pending-count"></span></div>
+            <div class="admin-tab" data-tab="approved">Approved Posts</div>
+            <div class="admin-tab" data-tab="rejected">Rejected Posts</div>
+            <div class="admin-tab" data-tab="files">My Files</div>
+        </div>
+
+        <!-- PENDING -->
+        <div class="admin-panel active" id="panel-pending">
+            <div id="pending-list"></div>
+        </div>
+
+        <!-- APPROVED -->
+        <div class="admin-panel" id="panel-approved">
+            <div id="approved-list"></div>
+        </div>
+
+        <!-- REJECTED -->
+        <div class="admin-panel" id="panel-rejected">
+            <div id="rejected-list"></div>
+        </div>
+
+        <!-- FILES -->
+        <div class="admin-panel" id="panel-files">
+
+            <div class="file-upload-zone glass" id="drop-zone">
+                <i class="fas fa-cloud-arrow-up"></i>
+                <p>Drag a file here, or click to browse</p>
+                <p style="font-size:0.72rem; margin-top:0.4rem; color:var(--muted-dim);">Assignments, notes, certificates — anything you want stored privately.</p>
+                <input type="file" id="file-input" style="display:none;">
+            </div>
+
+            <div id="upload-status" class="status-msg"></div>
+
+            <div id="files-list"></div>
+
+        </div>
+
+    </div>
+
+    <script src="supabase-config.js"></script>
+    <script>
+
+        const loginView = document.getElementById('login-view');
+        const dashboardView = document.getElementById('dashboard-view');
+        const logoutBtn = document.getElementById('logout-btn');
+        const userEmailEl = document.getElementById('user-email');
+
+        // ---------- AUTH ----------
+
+        async function checkSession(){
+            const { data:{ session } } = await supabaseClient.auth.getSession();
+            if(session){
+                showDashboard(session.user.email);
+            } else {
+                showLogin();
+            }
+        }
+
+        function showLogin(){
+            loginView.style.display = 'block';
+            dashboardView.style.display = 'none';
+            logoutBtn.style.display = 'none';
+            userEmailEl.textContent = '';
+        }
+
+        function showDashboard(email){
+            loginView.style.display = 'none';
+            dashboardView.style.display = 'block';
+            logoutBtn.style.display = 'inline-flex';
+            userEmailEl.textContent = email;
+            loadAllPosts();
+            loadFiles();
+        }
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+
+            e.preventDefault();
+
+            const btn = document.getElementById('login-btn');
+            const statusEl = document.getElementById('login-status');
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+            statusEl.classList.remove('success','error');
+
+            if(error){
+                statusEl.textContent = 'Login failed: ' + error.message;
+                statusEl.classList.add('error','show');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-lock"></i> Log In';
+            } else {
+                showDashboard(data.user.email);
+            }
+
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            await supabaseClient.auth.signOut();
+            showLogin();
+        });
+
+        checkSession();
+
+        // ---------- TABS ----------
+
+        document.querySelectorAll('.admin-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ---------- BLOG MANAGEMENT ----------
+
+        function escapeHtml(str){
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        async function loadAllPosts(){
+
+            const { data, error } = await supabaseClient
+                .from('blog_posts')
+                .select('*')
+                .order('created_at', { ascending:false });
+
+            if(error){ console.error(error); return; }
+
+            const pending = data.filter(p => p.status === 'pending');
+            const approved = data.filter(p => p.status === 'approved');
+            const rejected = data.filter(p => p.status === 'rejected');
+
+            document.getElementById('pending-count').textContent = pending.length > 0 ? `(${pending.length})` : '';
+
+            renderPostList('pending-list', pending, true);
+            renderPostList('approved-list', approved, false);
+            renderPostList('rejected-list', rejected, false);
+
+        }
+
+        function renderPostList(elId, posts, showActions){
+
+            const el = document.getElementById(elId);
+
+            if(posts.length === 0){
+                el.innerHTML = `<div class="empty-state"><i class="fas fa-inbox"></i><p>Nothing here.</p></div>`;
+                return;
+            }
+
+            el.innerHTML = posts.map(post => {
+
+                const date = new Date(post.created_at).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+                const badgeClass = post.status === 'approved' ? 'badge-approved' : post.status === 'rejected' ? 'badge-rejected' : 'badge-pending';
+
+                let actions = '';
+
+                if(showActions){
+                    actions = `
+                        <div class="admin-item-actions">
+                            <button class="btn btn-primary btn-small" onclick="updatePostStatus('${post.id}','approved')"><i class="fas fa-check"></i> Approve</button>
+                            <button class="btn btn-danger btn-small" onclick="updatePostStatus('${post.id}','rejected')"><i class="fas fa-xmark"></i> Reject</button>
+                        </div>
+                    `;
+                } else {
+                    actions = `
+                        <div class="admin-item-actions">
+                            <button class="btn btn-danger btn-small" onclick="deletePost('${post.id}')"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="admin-item glass">
+                        <div class="admin-item-content">
+                            <span class="badge ${badgeClass}">${post.status}</span>
+                            <h3 class="admin-item-title" style="margin-top:0.6rem;">${escapeHtml(post.title)}</h3>
+                            <div class="admin-item-meta">By ${escapeHtml(post.author_name)} ${post.author_email ? '· ' + escapeHtml(post.author_email) : ''} · ${date}</div>
+                            <p class="admin-item-body">${escapeHtml(post.content)}</p>
+                        </div>
+                        ${actions}
+                    </div>
+                `;
+
+            }).join('');
+
+        }
+
+        async function updatePostStatus(id, status){
+            const { error } = await supabaseClient.from('blog_posts').update({ status }).eq('id', id);
+            if(error){ alert('Could not update post: ' + error.message); return; }
+            loadAllPosts();
+        }
+
+        async function deletePost(id){
+            if(!confirm('Delete this post permanently?')) return;
+            const { error } = await supabaseClient.from('blog_posts').delete().eq('id', id);
+            if(error){ alert('Could not delete post: ' + error.message); return; }
+            loadAllPosts();
+        }
+
+        // ---------- FILE VAULT ----------
+
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const uploadStatus = document.getElementById('upload-status');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--glass-border-hover)'; });
+        dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '';
+            if(e.dataTransfer.files.length) uploadFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.addEventListener('change', () => {
+            if(fileInput.files.length) uploadFile(fileInput.files[0]);
+        });
+
+        async function uploadFile(file){
+
+            uploadStatus.classList.remove('success','error');
+            uploadStatus.textContent = 'Uploading ' + file.name + '...';
+            uploadStatus.classList.add('show');
+
+            const filePath = `${Date.now()}_${file.name}`;
+
+            const { error:uploadError } = await supabaseClient.storage
+                .from('private-files')
+                .upload(filePath, file);
+
+            if(uploadError){
+                uploadStatus.textContent = 'Upload failed: ' + uploadError.message;
+                uploadStatus.classList.add('error');
+                return;
+            }
+
+            const { error:dbError } = await supabaseClient.from('private_files').insert([{
+                file_name: file.name,
+                file_path: filePath,
+                file_type: file.type || 'unknown'
+            }]);
+
+            if(dbError){
+                uploadStatus.textContent = 'File uploaded but failed to save record: ' + dbError.message;
+                uploadStatus.classList.add('error');
+                return;
+            }
+
+            uploadStatus.textContent = 'Uploaded successfully.';
+            uploadStatus.classList.add('success');
+            fileInput.value = '';
+            loadFiles();
+
+        }
+
+        async function loadFiles(){
+
+            const { data, error } = await supabaseClient
+                .from('private_files')
+                .select('*')
+                .order('uploaded_at', { ascending:false });
+
+            const el = document.getElementById('files-list');
+
+            if(error){ console.error(error); return; }
+
+            if(!data || data.length === 0){
+                el.innerHTML = `<div class="empty-state"><i class="fas fa-folder-open"></i><p>No files yet. Upload your first one above.</p></div>`;
+                return;
+            }
+
+            el.innerHTML = data.map(file => {
+
+                const date = new Date(file.uploaded_at).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+                const icon = getFileIcon(file.file_name);
+
+                return `
+                    <div class="file-item glass">
+                        <div class="file-item-left">
+                            <i class="${icon}"></i>
+                            <div>
+                                <div class="file-item-name">${escapeHtml(file.file_name)}</div>
+                                <div class="file-item-meta">${date}</div>
+                            </div>
+                        </div>
+                        <div class="admin-item-actions">
+                            <button class="btn btn-secondary glass btn-small" onclick="downloadFile('${file.file_path}','${escapeHtml(file.file_name)}')"><i class="fas fa-download"></i></button>
+                            <button class="btn btn-danger btn-small" onclick="deleteFile('${file.id}','${file.file_path}')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+
+            }).join('');
+
+        }
+
+        function getFileIcon(name){
+            const ext = name.split('.').pop().toLowerCase();
+            if(['pdf'].includes(ext)) return 'fas fa-file-pdf';
+            if(['doc','docx'].includes(ext)) return 'fas fa-file-word';
+            if(['xls','xlsx','csv'].includes(ext)) return 'fas fa-file-excel';
+            if(['ppt','pptx'].includes(ext)) return 'fas fa-file-powerpoint';
+            if(['jpg','jpeg','png','gif','webp'].includes(ext)) return 'fas fa-file-image';
+            if(['zip','rar','7z'].includes(ext)) return 'fas fa-file-zipper';
+            if(['py','js','html','css','cpp','java','c'].includes(ext)) return 'fas fa-file-code';
+            return 'fas fa-file';
+        }
+
+        async function downloadFile(filePath, fileName){
+            const { data, error } = await supabaseClient.storage.from('private-files').download(filePath);
+            if(error){ alert('Could not download file: ' + error.message); return; }
+            const url = URL.createObjectURL(data);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        async function deleteFile(id, filePath){
+            if(!confirm('Delete this file permanently?')) return;
+            await supabaseClient.storage.from('private-files').remove([filePath]);
+            const { error } = await supabaseClient.from('private_files').delete().eq('id', id);
+            if(error){ alert('Could not delete file record: ' + error.message); return; }
+            loadFiles();
+        }
+
+    </script>
+
+</body>
+
+</html>
