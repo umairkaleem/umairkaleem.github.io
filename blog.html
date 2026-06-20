@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blog | Umair Kaleem</title>
+    <meta name="description" content="Read posts on AI, development, and student life — or submit your own for review.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="header-inner glass">
+            <nav class="nav-left">
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <nav class="nav-right">
+                <a href="index.html">Home</a>
+                <a href="Umair-Kaleem-Resume.pdf" download class="btn btn-primary">
+                    <i class="fas fa-file-download"></i> Resume
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BLOG HERO -->
+
+    <section class="blog-hero fade-up">
+        <div class="section-tag">Community Blog</div>
+        <h1 class="section-title">Ideas, Worth Sharing</h1>
+        <p class="section-sub">
+            A space for thoughts on AI, development, and student life.
+            Anyone can write — every post is reviewed before it goes live.
+        </p>
+    </section>
+
+    <!-- POST LIST -->
+
+    <section class="section" style="padding-top:0;">
+
+        <div id="blog-list" class="blog-list">
+            <!-- posts injected here -->
+        </div>
+
+        <div id="empty-state" class="empty-state" style="display:none;">
+            <i class="fas fa-pen-nib"></i>
+            <p>No posts yet — be the first to write one below.</p>
+        </div>
+
+    </section>
+
+    <!-- SUBMIT FORM -->
+
+    <section class="section" id="write">
+
+        <div class="section-header fade-up" style="text-align:center; margin-left:auto; margin-right:auto;">
+            <div class="section-tag">Write a Post</div>
+            <h2 class="section-title">Submit Your Own</h2>
+            <p class="section-sub" style="margin-left:auto;margin-right:auto;">Share something you've learned or built. Every submission is reviewed before publishing.</p>
+        </div>
+
+        <div class="form-box glass fade-up">
+
+            <form id="blog-form">
+                <input type="text" id="author_name" placeholder="Your Name" required>
+                <input type="email" id="author_email" placeholder="Your Email (not published, just in case I want to follow up)">
+                <input type="text" id="title" placeholder="Post Title" required>
+                <textarea id="content" rows="8" placeholder="Write your post here..." required></textarea>
+                <button type="submit" class="btn btn-primary" id="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit for Review
+                </button>
+                <p class="form-note">Your post will be visible once approved. This usually takes a day or two.</p>
+            </form>
+
+            <div id="status-msg" class="status-msg"></div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <span>© 2026 <span class="footer-name">Umair Kaleem</span></span>
+        <span>AI Engineer • Data Analyst • Full Stack Developer</span>
+        <a href="admin.html" class="footer-admin-link">Admin</a>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script>
+
+        // fade-up animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if(entry.isIntersecting){ entry.target.classList.add('active'); }
+            });
+        }, { threshold:0.1 });
+        document.querySelectorAll('.fade-up').forEach((el) => { observer.observe(el); });
+
+        // load approved posts
+        async function loadPosts(){
+
+            const { data, error } = await supabaseClient
+                .from('blog_posts')
+                .select('*')
+                .eq('status', 'approved')
+                .order('created_at', { ascending:false });
+
+            const listEl = document.getElementById('blog-list');
+            const emptyEl = document.getElementById('empty-state');
+
+            if(error){
+                console.error(error);
+                emptyEl.style.display = 'block';
+                emptyEl.querySelector('p').textContent = 'Could not load posts right now.';
+                return;
+            }
+
+            if(!data || data.length === 0){
+                emptyEl.style.display = 'block';
+                return;
+            }
+
+            listEl.innerHTML = data.map(post => {
+
+                const date = new Date(post.created_at).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+                const excerpt = post.content.length > 160 ? post.content.slice(0,160) + '…' : post.content;
+
+                return `
+                    <div class="blog-card glass fade-up active">
+                        <div class="blog-card-meta">
+                            <i class="fas fa-user" style="font-size:0.65rem;"></i>
+                            ${escapeHtml(post.author_name)}
+                            <span>•</span>
+                            ${date}
+                        </div>
+                        <h3 class="blog-card-title">${escapeHtml(post.title)}</h3>
+                        <p class="blog-card-excerpt">${escapeHtml(excerpt)}</p>
+                    </div>
+                `;
+
+            }).join('');
+
+        }
+
+        function escapeHtml(str){
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        loadPosts();
+
+        // submit form
+        document.getElementById('blog-form').addEventListener('submit', async (e) => {
+
+            e.preventDefault();
+
+            const btn = document.getElementById('submit-btn');
+            const statusEl = document.getElementById('status-msg');
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+            const payload = {
+                title: document.getElementById('title').value.trim(),
+                content: document.getElementById('content').value.trim(),
+                author_name: document.getElementById('author_name').value.trim(),
+                author_email: document.getElementById('author_email').value.trim() || null,
+                status: 'pending'
+            };
+
+            const { error } = await supabaseClient.from('blog_posts').insert([payload]);
+
+            statusEl.classList.remove('success','error');
+
+            if(error){
+                statusEl.textContent = 'Something went wrong submitting your post. Please try again.';
+                statusEl.classList.add('error','show');
+                console.error(error);
+            } else {
+                statusEl.textContent = 'Thanks! Your post was submitted and is awaiting approval.';
+                statusEl.classList.add('success','show');
+                document.getElementById('blog-form').reset();
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit for Review';
+
+        });
+
+    </script>
+
+</body>
+
+</html>
